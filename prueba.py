@@ -5,14 +5,14 @@ from tabulate import tabulate
 import patoolib
 import os
 
-# Extraer el archivo RAR
+# archivo RAR
 os.makedirs("carpeta_de_extraccion", exist_ok=True) 
 patoolib.extract_archive("prueba.rar", outdir="carpeta_de_extraccion")
 
-# Ruta del archivo extraído
+# Ruta del archivo
 ruta_archivo_extraido = "carpeta_de_extraccion/prueba/Products.txt"  
 
-# Leer el archivo extraído con pandas
+# Leer el archivo con pandas
 df_txt = pd.read_csv(ruta_archivo_extraido, sep='\t', on_bad_lines='skip') 
 print('#'*20,"Archivo .txt",'#'*20)
 print(df_txt.info())
@@ -22,10 +22,9 @@ print('df1');print(tabulate(df1.head(5),headers='keys'))
 print('df2');print(tabulate(df2.head(5),headers='keys'))
 
 # --------------------------------------
-# --------------------------------------
 
 # Leer el archivo JSON en un DataFrame de pandas
-df_json = pd.read_json('carpeta_de_extraccion/prueba/harmonized.json', lines=True) # Se ajusta la ruta para el archivo JSON
+df_json = pd.read_json('carpeta_de_extraccion/prueba/harmonized.json', lines=True) 
 print('#'*20,"Archivo .json",'#'*20)
 print(df_json.info())
 
